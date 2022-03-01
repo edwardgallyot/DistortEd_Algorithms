@@ -13,14 +13,14 @@ int main ()
 
         // Testing different processing algorithms
 
-        wave.processData (&DistortEdAlgorithms::scaleInDb<float>, 6.0f);
-
+//        wave.processData (&DistortEdAlgorithms::scaleInDb<float>, 0.0f);
+//
 //        wave.processData (&DistortEdAlgorithms::processHardClip<float>, 0.1);
 //
 //        for(auto i = 0; i < 100; ++i){
 //            wave.processData (&DistortEdAlgorithms::processCubicClip<float>, 1);
 //        }
-
+//
 //        wave.processData (&DistortEdAlgorithms::processHalfWaveRect<float>);
 //        wave.processData (&DistortEdAlgorithms::processFullWaveRect<float>);
 //        wave.processData (&DistortEdAlgorithms::processInfiniteClip<float>);
@@ -34,13 +34,12 @@ int main ()
 //            wave.processData (&DistortEdAlgorithms::scaleInDb<float>, -5.0f);
 //            wave.processData (&DistortEdAlgorithms::processCubicClip<float>, 1);
 //        }
-
+//
 //        wave.processData (&DistortEdAlgorithms::processHardClip<float>, 0.8);
-
+//
 //        wave.processData (&DistortEdAlgorithms::dcOffsetClip<float>, -0.9);
-
-        wave.processData (&DistortEdAlgorithms::diodeClip<float>);
-
+//
+//        wave.processData (&DistortEdAlgorithms::diodeClip<float>);
 
         wave.writeFile ("test.wav");
     } catch (std::exception& e)
