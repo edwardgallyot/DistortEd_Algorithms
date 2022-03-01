@@ -1,0 +1,4 @@
+cmake_minimum_required(VERSION 3.20)
+
+add_library(DistortEd_Algorithmslib DistortEd_Algorithms.cpp)
+target_link_libraries(DistortEd_Algorithmslib m)
