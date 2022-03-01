@@ -231,6 +231,7 @@ public:
     };
 
     void processData (std::function<T(T, float)> function, float coeff1);
+    void processData (std::function<T(T)> function);
 
     void writeFileWithMute (std::string fileName)
     {
@@ -361,6 +362,22 @@ void Wave<T>::processData (std::function<T(T, float)> function, float coeff1)
             auto sample = m_Data[channel][dataPosition];
             //std::cout << m_Data[channel][dataPosition] << std::endl;
             m_Data[channel][dataPosition] = function(sample, coeff1);
+        }
+    }
+}
+
+template<typename T>
+void Wave<T>::processData (std::function<T(T)> function)
+{
+    auto numOfChannels = getNumOfChan ();
+    auto dataSize = getSubchunk2Size () / (getBitsPerSample () / 8);
+    auto channelSize = dataSize / numOfChannels;
+    for (auto dataPosition = 0; dataPosition < channelSize; ++dataPosition)
+    {
+        for (auto channel = 0; channel < numOfChannels; ++channel)
+        {
+            auto sample = m_Data[channel][dataPosition];
+            m_Data[channel][dataPosition] = function(sample);
         }
     }
 }
